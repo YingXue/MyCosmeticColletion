@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+
+<div id ="about" align="middle">
+<h4>I am building this website to keep track of all the cosmetics and skincare products I've bought.</h4>
+<ul>1. Best used before date</ul>
+<ul>2. Each catogory how many products I have</ul>
+<ul>3. Review the product I've used</ul>
+<ul>4. Learn angularJS</ul>
+</div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	
+	<h2>{{history()}}</h2><br>
+	
+	Product Name : <input type="text" ng-model="productName"><br>
+	Price : <input type="number" name="priceTag" ng-model="productPrice"><br>
+		
+	Catalog : <input type="text" ng-model="productCatalog"><br> <!--should be a dropdownlist here -->
+	Review: <input type="text" ng-model="productReview"><br>
+
+	<h2>{{purchase()}}</h2>
+</div>
+
+
+<script>
+
+
+app.controller("myCtrl", function($scope) {
+    $scope.productOwned= 50;
+    $scope.productName = "test";
+    $scope.productPrice = 0;
+    $scope.productCatalog = "";
+    $scope.productReview = "";
+
+    $scope.purchase == function(){
+    	return "Ying just bought " + $scope.productName ;
+    }
+});
+
+
+</script>
+
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+
+</body>
+</html>
