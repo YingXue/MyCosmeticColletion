@@ -10,6 +10,7 @@ app.controller("myCtrl", function($scope) {
 	    {name:"amarni fundation", catalog:"cosmetics/face"} , 
 	    {name:"sephora conture powder", catalog:"cosmetics/face"} 
     ];
+    $scope.catalogOptions = ["skin care/face", "skin care/eye", "cosmetics/eye", "cosmetics/face", "cosmetics/face"];
 
     $scope.purchase = function(){
     	return "Ying just bought " + $scope.productName + " for $" + $scope.productPrice;
