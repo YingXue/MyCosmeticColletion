@@ -4,13 +4,12 @@ app.controller("myCtrl", function($scope) {
     $scope.productCatalog = "";
     $scope.productReview = "";
     $scope.productOwned = [
-	    {name:"fresh loction", catalog:"skin care/face"}, 
-	    {name:"la mer eye concentrate", catalog:"skin care/eye"}, 
-	    {name:"too faced peach eyeshodow", catalog:"cosmetics/eye"} , 
-	    {name:"amarni fundation", catalog:"cosmetics/face"} , 
-	    {name:"sephora conture powder", catalog:"cosmetics/face"} 
+	    {"name":"fresh loction", "catalog":"skin care/face"}, 
+	    {"name":"la mer eye concentrate", "catalog":"skin care/eye"}, 
+	    {"name":"too faced peach eyeshodow", "catalog":"cosmetics/eye"} , 
+	    {"name":"amarni fundation", "catalog":"cosmetics/face"} , 
+	    {"name":"sephora conture powder", "catalog":"cosmetics/face"} 
     ];
-    $scope.catalogOptions = ["skin care/face", "skin care/eye", "cosmetics/eye", "cosmetics/face", "cosmetics/face"];
 
     $scope.purchase = function(){
     	return "Ying just bought " + $scope.productName + " for $" + $scope.productPrice;

@@ -29,9 +29,8 @@ table tr:nth-child(even) {
 	
 	<h2>{{purchase()}}</h2>	
 	Name : <input type="text" ng-model="productName"><br>
-	Price : <input type="number" name="priceTag" ng-model="productPrice"><br>
-		
-	Catalog : <select ng-model="productCatalog" ng-options ="x for x in catalogOptions"></select><br> 
+	Price : <input type="number" name="priceTag" ng-model="productPrice"><br>		
+	Catalog : <select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select><br> 
 	Review: <input type="text" ng-model="productReview"><br>
 
 	<h2>{{history()}}</h2><br>
