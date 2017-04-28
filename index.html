@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
-
 
 <div id ="about" align="middle">
 <h4>I am building this website to keep track of all the cosmetics and skincare products I've bought.</h4>
@@ -14,32 +27,25 @@
 
 <div ng-app="myApp" ng-controller="myCtrl">
 	
-	<h2>{{history()}}</h2><br>
-	
-	Product Name : <input type="text" ng-model="productName"><br>
+	<h2>{{purchase()}}</h2>	
+	Name : <input type="text" ng-model="productName"><br>
 	Price : <input type="number" name="priceTag" ng-model="productPrice"><br>
 		
 	Catalog : <input type="text" ng-model="productCatalog"><br> <!--should be a dropdownlist here -->
 	Review: <input type="text" ng-model="productReview"><br>
 
-	<h2>{{purchase()}}</h2>
+	<h2>{{history()}}</h2><br>
+	<table>
+	  <tr ng-repeat="x in productOwned">
+	    <td>{{ x.name }}</td>
+	    <td>{{ x.catalog }}</td>
+	  </tr>
+	</table>
 </div>
 
 
 <script>
 
-
-app.controller("myCtrl", function($scope) {
-    $scope.productOwned= 50;
-    $scope.productName = "test";
-    $scope.productPrice = 0;
-    $scope.productCatalog = "";
-    $scope.productReview = "";
-
-    $scope.purchase == function(){
-    	return "Ying just bought " + $scope.productName ;
-    }
-});
 
 
 </script>
