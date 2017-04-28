@@ -10,13 +10,17 @@ app.controller("myCtrl", function($scope) {
 	    {"name":"amarni fundation", "catalog":"cosmetics/face"} , 
 	    {"name":"sephora conture powder", "catalog":"cosmetics/face"} 
     ];
-
+    $scope.showPurchase = false;
     $scope.purchase = function(){
     	return "Ying just bought " + $scope.productName + " for $" + $scope.productPrice;
     }
 
     $scope.history = function(){
     	return "Ying already bought " + $scope.productOwned.length + " products";
+    }
+
+    $scope.showPurchaseNow = function(){
+    	$scope.showPurchase = !$scope.showPurchase;
     }
 });
 
