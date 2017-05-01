@@ -1,14 +1,14 @@
-app.controller("myCtrl", function($scope) {
+app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
     $scope.productName = "lotion";
     $scope.productPrice = 0;
     $scope.productCatalog = "";
     $scope.productReview = "";
     $scope.productOwned = [
-	    {"name":"fresh loction", "catalog":"skin care/face"}, 
-	    {"name":"la mer eye concentrate", "catalog":"skin care/eye"}, 
-	    {"name":"too faced peach eyeshodow", "catalog":"cosmetics/eye"} , 
-	    {"name":"amarni fundation", "catalog":"cosmetics/face"} , 
-	    {"name":"sephora conture powder", "catalog":"cosmetics/face"} 
+	    {"name":"fresh rose lotion", "catalog":"skin care / face", "price":"40", "dateofpurchase":"2017-04"}, 
+	    {"name":"la mer eye concentrate", "catalog":"skin care / eye", "price":"160", "dateofpurchase":"2017-03"}, 
+	    {"name":"too faced peach eyeshodow", "catalog":"cosmetics / eye", "price":"49", "dateofpurchase":"2017-02"} , 
+	    {"name":"givenchy ink fundation", "catalog":"cosmetics / face", "price":"60", "dateofpurchase":"2017-04"} , 
+	    {"name":"sephora conture powder", "catalog":"cosmetics / face", "price":"9", "dateofpurchase":"2017-04"} 
     ];
     $scope.showPurchase = false;
     $scope.purchase = function(){
@@ -16,11 +16,14 @@ app.controller("myCtrl", function($scope) {
     }
 
     $scope.history = function(){
-    	return "Already bought " + $scope.productOwned.length + " products";
+        //  $http.get('data.json').success(function(data){
+        //     $scope.productOwned = data;
+        return "Already bought " + $scope.productOwned.length + " products";
+        //});        
     }
 
     $scope.showPurchaseNow = function(){
     	$scope.showPurchase = !$scope.showPurchase;
     }
-});
+}]);
 
