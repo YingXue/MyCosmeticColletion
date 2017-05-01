@@ -10,7 +10,8 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
 	    {"name":"givenchy ink fundation", "catalog":"cosmetics / face", "price":"60", "dateofpurchase":"2017-04"} , 
 	    {"name":"sephora conture powder", "catalog":"cosmetics / face", "price":"9", "dateofpurchase":"2017-04"} 
     ];
-    $scope.showPurchase = false;
+    $scope.showPurchaseForm = false;
+    $scope.showPurchases = false;
     $scope.purchase = function(){
     	return "Just bought " + $scope.productName + " for $" + $scope.productPrice;
     }
@@ -22,8 +23,12 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
         //});        
     }
 
+    $scope.showPurchaseForms = function(){
+    	$scope.showPurchaseForm = !$scope.showPurchaseForm;
+    }
+
     $scope.showPurchaseNow = function(){
-    	$scope.showPurchase = !$scope.showPurchase;
+        $scope.showPurchases = !$scope.showPurchases;
     }
 }]);
 

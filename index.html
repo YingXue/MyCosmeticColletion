@@ -48,15 +48,36 @@
 			<div class="col-sm-3">
 				<div class="panel panel-default">
 					<div class="panel-heading"> 拔草 </div>
-					<div class="panel-body">
-
-						<button ng-click = "showPurchaseNow()"> Bought anything new? </button> 
-						<div ng-show="showPurchase">
-							<h4 >{{purchase()}}</h4>	
-							Name : <input type="text" ng-model="productName"><br>
-							Price : <input type="number" name="priceTag" ng-model="productPrice"><br>		
-							Catalog : <select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select><br> 
-						</div>
+						<div class="panel-body">
+							<form>
+								<div class="form-group row">
+								<button class="btn btn-default center-block" ng-click = "showPurchaseForms()"> Bought anything new? </button> 
+								</div>
+								<div ng-show="showPurchaseForm">
+									<div class="form-group row">
+									<label  class="col-sm-3 col-form-label">Name</label>
+										<div class="col-sm-9">
+										<input type="text" ng-model="productName"><br>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label  class="col-sm-3 col-form-label">Price</label>
+										<div class="col-sm-9">
+										<input type="number" name="priceTag" ng-model="productPrice">
+										</div>
+									</div>	
+									<div class="form-group row">
+										<label  class="col-sm-3 col-form-label">Catalog</label>
+										<div class="col-sm-9">
+										<select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
+										</div>
+									</div>	
+									<button class="btn btn-primary center-block" type="submit" ng-click = "showPurchaseNow()"> That's it! </button> 
+									<div ng-show="showPurchases">
+										<h4 >{{purchase()}}</h4>	
+									</div>
+								</div>
+							</form>
 					</div>
 				</div>
 			</div>
@@ -102,10 +123,6 @@
 			</div>
 		</div>
 	</div>
-
 </div>
-
-
-
 </body>
 </html>
