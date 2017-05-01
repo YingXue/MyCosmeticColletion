@@ -12,11 +12,11 @@ app.controller("myCtrl", function($scope) {
     ];
     $scope.showPurchase = false;
     $scope.purchase = function(){
-    	return "Ying just bought " + $scope.productName + " for $" + $scope.productPrice;
+    	return "Just bought " + $scope.productName + " for $" + $scope.productPrice;
     }
 
     $scope.history = function(){
-    	return "Ying already bought " + $scope.productOwned.length + " products";
+    	return "Already bought " + $scope.productOwned.length + " products";
     }
 
     $scope.showPurchaseNow = function(){

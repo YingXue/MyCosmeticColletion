@@ -1,50 +1,93 @@
 <!DOCTYPE html>
 <html>
-<style>
-table, th , td  {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-}
-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
-}
-table tr:nth-child(even) {
-  background-color: #ffffff;
-}
-</style>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
-<div id ="about" align="middle">
-<h4>I am building this website to keep track of all the cosmetics and skincare products I've bought.</h4>
-<ul>1. Best used before date</ul>
-<ul>2. Each catogory how many products I have</ul>
-<ul>3. Review the product I've used</ul>
-<ul>4. Learn angularJS</ul>
-</div>
-
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				ComsmeticDairy
+			</a>
+		</div>
+		<dv class="collpas nav-bar-collapse">
+			<ur class = "nav navbar-nav">
+				<li> <a href="about.html">About</a></li>
+			</ur>
+		</div>
+	</div>
+</nav>
 <div ng-app="myApp" ng-controller="myCtrl">
-	
-	<button ng-click = "showPurchaseNow()"> Bought anything new? </button> <!-- Add some style on toggle -->
-	<div ng-show="showPurchase">
-		<h2 >{{purchase()}}</h2>	
-		Name : <input type="text" ng-model="productName""><br>
-		Price : <input type="number" name="priceTag" ng-model="productPrice"><br>		
-		Catalog : <select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select><br> 
-		Review: <input type="text" ng-model="productReview"><br>
+	<div class="container">
+		<div class="row">
+			<!-- New stuff bought -->
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 拔草 </div>
+					<div class="panel-body">
+
+						<button ng-click = "showPurchaseNow()"> Bought anything new? </button> 
+						<div ng-show="showPurchase">
+							<h4 >{{purchase()}}</h4>	
+							Name : <input type="text" ng-model="productName"><br>
+							Price : <input type="number" name="priceTag" ng-model="productPrice"><br>		
+							Catalog : <select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select><br> 
+							Review: <input type="text" ng-model="productReview"><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Stuff already bought -->
+			<div class="col-sm-7">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 草地 </div>
+					<div class="panel-body">
+						<h2>{{history()}}</h2><br>
+						<table class="table table-striped">
+							<tr>
+								<th>Product</th>
+								<th>Catalog</th>
+							</tr>
+						 	<tr ng-repeat="x in productOwned">
+						    	<td>{{ x.name }}</td>
+						    	<td>{{ x.catalog }}</td>
+						  	</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- Stuff in the wishinglist -->
+			<div class="col-sm-2">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 种草 </div>
+					<div class="panel-body">
+						<div>
+							<p><a href="#">Interests</a></p>
+							<p>
+								<span class="label label-default">La Mer</span>
+					 			<span class="label label-primary">Dior</span>
+					 			<span class="label label-success">ColorPop</span>
+					 			<span class="label label-info">Chanel</span>
+					 			<span class="label label-warning">Givenchy</span>
+					 			<span class="label label-danger">NARS</span>
+							</p>
+					 	</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<h2>{{history()}}</h2><br>
-	<table>
-	  <tr ng-repeat="x in productOwned">
-	    <td>{{ x.name }}</td>
-	    <td>{{ x.catalog }}</td>
-	  </tr>
-	</table>
 </div>
-
 
 <script src="myApp.js"></script>
 <script src="myCtrl.js"></script>
