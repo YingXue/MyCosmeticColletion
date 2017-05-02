@@ -46,11 +46,20 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
             $scope.showPurchaseForm = false;
             $scope.showPurchaseButton = true;
         }
+        resetForm();
     }
 
     $scope.cancelPurchase = function(){
         $scope.showPurchaseForm = false;
         $scope.showPurchaseButton = true;
+        resetForm();
+    }
+
+    function resetForm(){
+        $scope.productName = "";
+        $scope.productPrice = 0;
+        $scope.productCatalog = "";
+        $scope.productReview = "";
     }
 }]);
 
