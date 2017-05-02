@@ -70,10 +70,14 @@
 									<div class="form-group row">
 										<label  class="col-sm-3 col-form-label">Catalog</label>
 										<div class="col-sm-9">
-										<select ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
+										<select style='width:175px' ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
 										</div>
 									</div>	
-									<button class="btn btn-primary center-block" type="submit" ng-click = "showPurchaseNow()"> That's it! </button> 
+									<br>
+									<div align="center">
+										<button class="btn btn-default" type="submit" ng-click = "showPurchaseNow()"> That's it! </button> 
+										<button class="btn btn-default" type="submit" ng-click = "cancelPurchase()"> Cancel! </button> 
+									</div>
 								</div>
 							</form>
 					</div>

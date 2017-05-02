@@ -47,5 +47,10 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
             $scope.showPurchaseButton = true;
         }
     }
+
+    $scope.cancelPurchase = function(){
+        $scope.showPurchaseForm = false;
+        $scope.showPurchaseButton = true;
+    }
 }]);
 
