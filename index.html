@@ -10,7 +10,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="myApp.js"></script>
 	<script src="myCtrl.js"></script>
-	<script src="data.json"></script>
 </head>
 
 <body>
@@ -51,7 +50,8 @@
 						<div class="panel-body">
 							<form>
 								<div class="form-group row">
-								<button class="btn btn-default center-block" ng-click = "showPurchaseForms()"> Bought anything new? </button> 
+								<button class="btn btn-default center-block" ng-click = "showPurchaseForms()" ng-show="showPurchaseButton"> 		Bought anything new? 
+								</button> 
 								</div>
 								<div ng-show="showPurchaseForm">
 									<div class="form-group row">
@@ -73,9 +73,6 @@
 										</div>
 									</div>	
 									<button class="btn btn-primary center-block" type="submit" ng-click = "showPurchaseNow()"> That's it! </button> 
-									<div ng-show="showPurchases">
-										<h4 >{{purchase()}}</h4>	
-									</div>
 								</div>
 							</form>
 					</div>

@@ -1,5 +1,5 @@
 app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
-    $scope.productName = "lotion";
+    $scope.productName = "";
     $scope.productPrice = 0;
     $scope.productCatalog = "";
     $scope.productReview = "";
@@ -11,10 +11,9 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
 	    {"name":"sephora conture powder", "catalog":"cosmetics / face", "price":"9", "dateofpurchase":"2017-04"} 
     ];
     $scope.showPurchaseForm = false;
-    $scope.showPurchases = false;
-    $scope.purchase = function(){
-    	return "Just bought " + $scope.productName + " for $" + $scope.productPrice;
-    }
+    $scope.showPurchaseButton = true;
+    
+
 
     $scope.history = function(){
         //  $http.get('data.json').success(function(data){
@@ -24,11 +23,29 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
     }
 
     $scope.showPurchaseForms = function(){
-    	$scope.showPurchaseForm = !$scope.showPurchaseForm;
+    	$scope.showPurchaseForm = true;
+        $scope.showPurchaseButton = false;
     }
 
     $scope.showPurchaseNow = function(){
-        $scope.showPurchases = !$scope.showPurchases;
+        if ($scope.productName == ""){
+            alert("Please enter Product Name");
+        }
+        else if($scope.productCatalog == ""){
+            alert("Please choose Product catalog");
+        }
+        else{
+        var today = new Date();
+           $scope.productOwned.push(
+            {
+                "name":$scope.productName, 
+                "catalog":$scope.productCatalog.catalog, 
+                "price":$scope.productPrice, 
+                "dateofpurchase":today
+            });
+            $scope.showPurchaseForm = false;
+            $scope.showPurchaseButton = true;
+        }
     }
 }]);
 
