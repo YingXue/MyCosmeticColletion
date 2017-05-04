@@ -2,33 +2,40 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
     $scope.productName = "";
     $scope.productPrice = 0;
     $scope.productCatalog = "";
-    //$scope.productReview = "";
     $scope.productOwnedSummary = "";
+    
     //productOwned need to read file json file
     $scope.productOwned = [
-	    {"name":"fresh rose lotion", "catalog":"skin care / face", "price":"40", "dateofpurchase":"2017-04"}, 
-	    {"name":"la mer eye concentrate", "catalog":"skin care / eye", "price":"160", "dateofpurchase":"2017-03"}, 
-	    {"name":"too faced peach eyeshodow", "catalog":"cosmetics / eye", "price":"49", "dateofpurchase":"2017-02"} , 
-	    {"name":"givenchy ink fundation", "catalog":"cosmetics / face", "price":"60", "dateofpurchase":"2017-04"} , 
-	    {"name":"sephora conture powder", "catalog":"cosmetics / face", "price":"9", "dateofpurchase":"2017-04"} 
+        {"name":"La Mer Eye Concentrate", "catalog":"Skincare / Eye", "price":"180", "dateofpurchase":"2017-03"}, 
+        {"name":"Cle De Peau Correcting Cream Veil", "catalog":"Cosmetics / Face", "price":"70", "dateofpurchase":"2017-03"},
+	    {"name":"Laura Mercier Pressed Powder", "catalog":"Cosmetics / Face", "price":"56", "dateofpurchase":"2017-03"},
+        {"name":"Giorgio Armani Eyeshaper", "catalog":"Cosmetics / Tool", "price":"25", "dateofpurchase":"2017-03"},
+        {"name":"Marc Jacobs Matte Eyeliner", "catalog":"Cosmetics / Eye", "price":"20", "dateofpurchase":"2017-03"},
+        {"name":"Fresh Deep Hydration Facial Toner", "catalog":"Skincare / Face", "price":"40", "dateofpurchase":"2017-04"}, 
+	    {"name":"Nars Dual-intensity Eyeshadow", "catalog":"Cosmetics / Eye", "price":"26", "dateofpurchase":"2017-04"} , 
+	    {"name":"givenchy ink fundation", "catalog":"Cosmetics / Face", "price":"60", "dateofpurchase":"2017-05"} , 
+	    {"name":"Sephora Colorful Face Powders", "catalog":"Cosmetics / Face", "price":"14", "dateofpurchase":"2017-04"} 
     ];
     $scope.productOwnedCharData = [{
-        name: 'cosmetics / eye',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-        stack: 'cosmetics'
+        name: 'cosmetics / Eye',
+        data: [0, 0, 20, 26, 0, 0, 0, 0, 0, 0, 0, 0],
+        stack: 'Cosmetics'
         },{
-        name: 'cosmetics / face',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-        stack: 'cosmetics'
-    }, {
-        name: 'skin care / face',
-        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3],
-        stack: 'skin care'
-    }
-    , {
-        name: 'skin care / eye',
-        data: [83.6, 0, 98.5, 93.4, 106.0, 84.5, 10.5, 5, 91.2, 83.5, 106.6, 70],
-        stack: 'skin care'
+        name: 'Cosmetics / Face',
+        data: [0, 0, 126, 74, 0, 0, 0, 0, 0, 0, 0, 0],
+        stack: 'Cosmetics'
+        }, {
+        name: 'Cosmetics / Tool',
+        data: [0, 0, 25, 74, 0, 0, 0, 0, 0, 0, 0, 0],
+        stack: 'Cosmetics'
+        },{
+        name: 'Skincare / Face',
+        data: [0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0],
+        stack: 'Skincare'
+        }, {
+        name: 'Skincare / Eye',
+        data: [0, 0, 180, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        stack: 'Skincare'
     }];
     
     $scope.showPurchaseForm = false;
@@ -48,7 +55,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
         $scope.showPurchaseButton = false;
     }
 
-    $scope.showPurchaseNow = function(){
+    $scope.addPurchase = function(){
         if ($scope.productName == ""){
             alert("Please enter Product Name");
         }
@@ -66,9 +73,12 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
             });
             $scope.showPurchaseForm = false;
             $scope.showPurchaseButton = true;
-        }
-        // new data needs to be added to chart, should call draw highchart function
-        resetForm();
+
+            resetForm();
+            
+            // new data needs to be added to productOwnedCharData
+            drawHighChart($scope.productOwnedCharData);
+        }       
     }
 
     $scope.cancelPurchase = function(){
