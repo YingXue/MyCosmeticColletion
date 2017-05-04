@@ -15,8 +15,8 @@
 </head>
 <style type="text/css">
 	.fixed-panel {
-	  min-height: 300px;
-	  max-height: 300px;
+	  min-height: 280px;
+	  max-height: 280px;
 	  overflow-y: scroll;
 	}
 
@@ -84,7 +84,7 @@
 			<!-- New stuff bought -->
 			<div class="col-sm-3" ng-controller="myCtrl">
 				<div class="panel panel-default">
-					<div class="panel-heading"> 拔草 </div>
+					<div class="panel-heading"> Add New Purchase </div>
 					<div class="panel-body">
 						<form>
 							<div class="form-group row">
@@ -137,9 +137,9 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading"> 草地 </div>
+					<div class="panel-heading"> Buying History</div>
 					<div class="panel-body fixed-panel" >
-						<h2>{{productOwnedSummary}}</h2><br>
+						<!--<h2>{{productOwnedSummary}}</h2><br>-->
 						<table class="table table-striped">
 							<tr>
 								<th>Product</th>
@@ -158,10 +158,9 @@
 			<!-- Stuff in the wishinglist -->
 			<div class="col-sm-2"  ng-controller="myCtrl">
 				<div class="panel panel-default">
-					<div class="panel-heading"> 种草 </div>
+					<div class="panel-heading"> Interests </div>
 					<div class="panel-body">
 						<div>
-							<p><a href="#">Interests</a></p>
 							<p>
 								<span class="label label-default">La Mer</span>
 					 			<span class="label label-primary">Dior</span>
