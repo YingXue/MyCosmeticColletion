@@ -1,41 +1,31 @@
-app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
+app.controller("myCtrl", ['$scope', '$http',function($scope, $http) {
     $scope.productName = "";
     $scope.productPrice = 0;
     $scope.productCatalog = "";
     $scope.productOwnedSummary = "";
     $scope.purchaseDate = "";
     //productOwned need to read file json file
-    $scope.productOwned = [
-        {"name":"La Mer Eye Concentrate", "catalog":"Skincare / Eye", "price":"180", "dateofpurchase":"2017/03"}, 
-        {"name":"Cle De Peau Correcting Cream Veil", "catalog":"Cosmetics / Face", "price":"70", "dateofpurchase":"2017/03"},
-	    {"name":"Laura Mercier Pressed Powder", "catalog":"Cosmetics / Face", "price":"56", "dateofpurchase":"2017/03"},
-        {"name":"Giorgio Armani Eyeshaper", "catalog":"Cosmetics / Tool", "price":"25", "dateofpurchase":"2017/03"},
-        {"name":"Marc Jacobs Matte Eyeliner", "catalog":"Cosmetics / Eye", "price":"20", "dateofpurchase":"2017/03"},
-        {"name":"Fresh Deep Hydration Facial Toner", "catalog":"Skincare / Face", "price":"40", "dateofpurchase":"2017/04"}, 
-	    {"name":"Nars Dual-intensity Eyeshadow", "catalog":"Cosmetics / Eye", "price":"26", "dateofpurchase":"2017/04"} , 
-	    {"name":"Givenchy Ink fundation", "catalog":"Cosmetics / Face", "price":"60", "dateofpurchase":"2017/05"} , 
-	    {"name":"Sephora Colorful Face Powders", "catalog":"Cosmetics / Face", "price":"14", "dateofpurchase":"2017/04"} 
-    ];
+    $scope.productOwned = [];
     $scope.productOwnedCharData = [{
-        name: 'cosmetics / Eye',
-        data: [0, 0, 20, 26, 0, 0, 0, 0, 0, 0, 0, 0],
-        stack: 'Cosmetics'
+        "name": 'cosmetics / Eye',
+        "data": [0, 0, 20, 26, 0, 0, 0, 0, 0, 0, 0, 0],
+        "stack": 'Cosmetics'
         },{
-        name: 'Cosmetics / Face',
-        data: [0, 0, 126, 14, 60, 0, 0, 0, 0, 0, 0, 0],
-        stack: 'Cosmetics'
+        "name": 'Cosmetics / Face',
+        "data": [0, 0, 126, 14, 60, 0, 0, 0, 0, 0, 0, 0],
+        "stack": 'Cosmetics'
         }, {
-        name: 'Cosmetics / Tool',
-        data: [0, 0, 25, 74, 0, 0, 0, 0, 0, 0, 0, 0],
-        stack: 'Cosmetics'
+        "name": 'Cosmetics / Tool',
+        "data": [0, 0, 25, 74, 0, 0, 0, 0, 0, 0, 0, 0],
+        "stack": 'Cosmetics'
         },{
-        name: 'Skincare / Face',
-        data: [0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0],
-        stack: 'Skincare'
+        "name": 'Skincare / Face',
+        "data": [0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0],
+        "stack": 'Skincare'
         }, {
-        name: 'Skincare / Eye',
-        data: [0, 0, 180, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        stack: 'Skincare'
+        "name": 'Skincare / Eye',
+        "data": [0, 0, 180, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        "stack": 'Skincare'
     }];
     
     $scope.showPurchaseForm = false;
@@ -43,9 +33,10 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
 
     //scope functions
     $scope.init = function(){
-        //  $http.get('data.json').success(function(data){
-        //     $scope.productOwned = data;
+        //$http.get('data.js').success(function(data){
+        //    $scope.productOwned = data.items;
         //});  
+        $scope.productOwned = JSON.parse(products);
         drawHighChart($scope.productOwnedCharData);       
     }
 
