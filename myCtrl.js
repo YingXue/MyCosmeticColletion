@@ -13,7 +13,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
         {"name":"Marc Jacobs Matte Eyeliner", "catalog":"Cosmetics / Eye", "price":"20", "dateofpurchase":"2017/03"},
         {"name":"Fresh Deep Hydration Facial Toner", "catalog":"Skincare / Face", "price":"40", "dateofpurchase":"2017/04"}, 
 	    {"name":"Nars Dual-intensity Eyeshadow", "catalog":"Cosmetics / Eye", "price":"26", "dateofpurchase":"2017/04"} , 
-	    {"name":"givenchy ink fundation", "catalog":"Cosmetics / Face", "price":"60", "dateofpurchase":"2017/04"} , 
+	    {"name":"Givenchy Ink fundation", "catalog":"Cosmetics / Face", "price":"60", "dateofpurchase":"2017/05"} , 
 	    {"name":"Sephora Colorful Face Powders", "catalog":"Cosmetics / Face", "price":"14", "dateofpurchase":"2017/04"} 
     ];
     $scope.productOwnedCharData = [{
@@ -22,7 +22,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
         stack: 'Cosmetics'
         },{
         name: 'Cosmetics / Face',
-        data: [0, 0, 126, 74, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: [0, 0, 126, 14, 60, 0, 0, 0, 0, 0, 0, 0],
         stack: 'Cosmetics'
         }, {
         name: 'Cosmetics / Tool',
@@ -143,4 +143,39 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
     }
 
     $scope.init();
+}]);
+
+app.controller("ChecklistController", ['$scope', '$http', function ($scope, $http) {
+    $scope.todos = [{"text":"ByTerry Eyeshadow"},{"text":"Viseart Eyeshadow Pallet"}];
+    $scope.markAll = false;
+
+    $scope.addTodo = function() {
+      if(event.keyCode == 13 && $scope.todoText){
+          $scope.todos.push({text:$scope.todoText, done:false});
+          $scope.todoText = '';
+      }
+    };
+
+    $scope.toggleEditMode = function(){
+      $(event.target).closest('li').toggleClass('editing');
+    };
+
+    $scope.editOnEnter = function(todo){
+      if(event.keyCode == 13 && todo.text){
+          $scope.toggleEditMode();
+      }
+    };
+
+     $scope.deleteItem = function (todo) {
+        /*
+        for (var index = $scope.todos.length - 1; index >= 0, index--;) {
+            if ($scope.todos[index].Id == todo.Id) {
+                $scope.todos.splice(index, 1);
+            }
+        }
+        if ($scope.todos.length == 1) $scope.todos = [];
+        $scope.UpdateCheckList();
+        */
+        $scope.toggleEditMode();
+    };
 }]);
