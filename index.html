@@ -81,82 +81,83 @@
 <div ng-app="myApp">
 	<div class="container">
 		<div class="row">
-			<!-- New stuff bought -->
-			<div class="col-sm-3" ng-controller="myCtrl">
-				<div class="panel panel-default">
-					<div class="panel-heading"> Add New Purchase </div>
-					<div class="panel-body">
-						<form>
-							<div class="form-group row">
-							<img src="pictures/Shopping-cart-logo.png" alt ="About" height = "240">
-							<div align="center"> 		
-							<img src="pictures/plus.png" alt ="About" height = "40" ng-click = "showPurchaseForms()" ng-show="showPurchaseButton">
-							</div> 
-							</div>
-							<div ng-show="showPurchaseForm">
+			<div ng-controller="myCtrl">
+				<!-- New stuff bought -->
+				<div class="col-sm-3">
+					<div class="panel panel-default">
+						<div class="panel-heading"> Add New Purchase </div>
+						<div class="panel-body">
+							<form>
 								<div class="form-group row">
-								<label  class="col-sm-3 col-form-label">Name</label>
-									<div class="col-sm-9">
-									<input type="text" ng-model="productName"><br>
+								<img src="pictures/Shopping-cart-logo.png" alt ="About" height = "240">
+								<div align="center"> 		
+								<img src="pictures/plus.png" alt ="About" height = "40" ng-click = "showPurchaseForms()" ng-show="showPurchaseButton">
+								</div> 
+								</div>
+								<div ng-show="showPurchaseForm">
+									<div class="form-group row">
+									<label  class="col-sm-3 col-form-label">Name</label>
+										<div class="col-sm-9">
+										<input type="text" ng-model="productName"><br>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label  class="col-sm-3 col-form-label">Price</label>
+										<div class="col-sm-9">
+										<input type="number" ng-model="productPrice">
+										</div>
+									</div>	
+									<div class="form-group row">
+										<label  class="col-sm-3 col-form-label">Catalog</label>
+										<div class="col-sm-9">
+										<select style='width:175px' ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
+										</div>
+									</div>	
+									<div class="form-group row">
+										<label  class="col-sm-3 col-form-label">Date</label>
+										<div class="col-sm-9">
+										<input type="text" ng-model="purchaseDate">
+										<label>Format: YYYY/MM</label>
+										</div>
+									</div>	
+									<br>
+									<div align="center">
+										<button class="btn btn-default" type="submit" ng-click = "addPurchase()"> That's it! </button> 
+										<button class="btn btn-default" type="submit" ng-click = "cancelPurchase()"> Cancel! </button> 
 									</div>
 								</div>
-								<div class="form-group row">
-									<label  class="col-sm-3 col-form-label">Price</label>
-									<div class="col-sm-9">
-									<input type="number" ng-model="productPrice">
-									</div>
-								</div>	
-								<div class="form-group row">
-									<label  class="col-sm-3 col-form-label">Catalog</label>
-									<div class="col-sm-9">
-									<select style='width:175px' ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
-									</div>
-								</div>	
-								<div class="form-group row">
-									<label  class="col-sm-3 col-form-label">Date</label>
-									<div class="col-sm-9">
-									<input type="text" ng-model="purchaseDate">
-									<label>Format: YYYY/MM</label>
-									</div>
-								</div>	
-								<br>
-								<div align="center">
-									<button class="btn btn-default" type="submit" ng-click = "addPurchase()"> That's it! </button> 
-									<button class="btn btn-default" type="submit" ng-click = "cancelPurchase()"> Cancel! </button> 
-								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- Stuff already bought -->
-			<div class="col-sm-7"  ng-controller="myCtrl">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div id="chartContainer"></div>
+				<!-- Stuff already bought -->
+				<div class="col-sm-7">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div id="chartContainer"></div>
+						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading"> Buying History</div>
-					<div class="panel-body fixed-panel" >
-						<!--<h2>{{productOwnedSummary}}</h2><br>-->
-						<table class="table table-striped">
-							<tr>
-								<th>Product</th>
-								<th>Catalog</th>
-								<th>Price</th>
-							</tr>
-						 	<tr ng-repeat="x in productOwned">
-								<td>{{ x.name }}</td>
-								<td>{{ x.catalog }}</td>
-								<td>${{ x.price }}</td>
-						  	</tr>
-						</table>
+					<div class="panel panel-default">
+						<div class="panel-heading"> Buying History</div>
+						<div class="panel-body fixed-panel" >
+							<table class="table table-striped">
+								<tr>
+									<th>Product</th>
+									<th>Catalog</th>
+									<th>Price</th>
+								</tr>
+							 	<tr ng-repeat="x in productOwned">
+									<td>{{ x.name }}</td>
+									<td>{{ x.catalog }}</td>
+									<td>${{ x.price }}</td>
+							  	</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Stuff in the wishinglist -->
-			<div class="col-sm-2"  ng-controller="myCtrl">
+			<div class="col-sm-2" ng-controller="ChecklistController">
 				<div class="panel panel-default">
 					<div class="panel-heading"> Interests </div>
 					<div class="panel-body">
@@ -174,22 +175,20 @@
 				</div>
 				<div class="panel panel-default fixed-width-panel">
 					<div class="panel-heading"> Wishlist </div>
-					<div class="panel-body">
-						<div ng-controller="ChecklistController">
-							<input id="new-todo" type="text" ng-model="todoText" size="15" ng-keyup="addTodo()"/>
-							<ul id="todo-list" class="unstyled">
-								<li ng-repeat="todo in todos" ng-dblclick="toggleEditMode()">
-								<div class="view" ng-keyup="editTodo()">
-									<input type="checkbox" data-size="xs" ng-model="todo.done"/>
-									<span class="done-{{todo.done}}" >{{todo.text}}</span>
-								</div>
-								<div class="eid">
-								<!--<input class="edit" type="text" ng-model="todo.text" ng-keyup="editOnEnter(todo)"/> -->
-								<!--<input type="button" value="Delete" class="btn btn-primary btn-xs" ng-click="deleteItem(todo)"/> -->
-								</div>
-								</li>
-							</ul>
-						</div>
+					<div class="panel-body">						
+						<input id="new-todo" type="text" ng-model="todoText" size="15" ng-keyup="addTodo()"/>
+						<ul id="todo-list" class="unstyled">
+							<li ng-repeat="todo in todos" ng-dblclick="toggleEditMode()">
+							<div class="view" ng-keyup="editTodo()">
+								<input type="checkbox" data-size="xs" ng-model="todo.done"/>
+								<span class="done-{{todo.done}}" >{{todo.text}}</span>
+							</div>
+							<div class="eid">
+							<!--<input class="edit" type="text" ng-model="todo.text" ng-keyup="editOnEnter(todo)"/> -->
+							<!--<input type="button" value="Delete" class="btn btn-primary btn-xs" ng-click="deleteItem(todo)"/> -->
+							</div>
+							</li>
+						</ul>						
 					</div>
 				</div>
 			</div>

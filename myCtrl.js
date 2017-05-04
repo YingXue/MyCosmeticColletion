@@ -45,7 +45,6 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
     $scope.init = function(){
         //  $http.get('data.json').success(function(data){
         //     $scope.productOwned = data;
-        $scope.productOwnedSummary =  "Already bought " + $scope.productOwned.length + " products";
         //});  
         drawHighChart($scope.productOwnedCharData);       
     }
@@ -67,7 +66,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
             $scope.purchaseDate = "";
         }
         else{
-        console.log($scope.purchaseDate);
+        
            $scope.productOwned.push(
             {
                 "name":$scope.productName, 
@@ -78,6 +77,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
             $scope.showPurchaseForm = false;
             $scope.showPurchaseButton = true;
 
+            console.log($scope.productOwned);
             resetForm();
             
             // new data needs to be added to productOwnedCharData
@@ -97,6 +97,7 @@ app.controller("myCtrl", ['$scope', '$http',function($scope,$http) {
         $scope.productPrice = 0;
         $scope.productCatalog = "";
         $scope.productReview = "";
+        $scope.purchaseDate = "";
     }
 
     function isValidDate(date){
