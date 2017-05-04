@@ -67,13 +67,20 @@
 								<div class="form-group row">
 									<label  class="col-sm-3 col-form-label">Price</label>
 									<div class="col-sm-9">
-									<input type="number" name="priceTag" ng-model="productPrice">
+									<input type="number" ng-model="productPrice">
 									</div>
 								</div>	
 								<div class="form-group row">
 									<label  class="col-sm-3 col-form-label">Catalog</label>
 									<div class="col-sm-9">
 									<select style='width:175px' ng-model="productCatalog" ng-options ="x.catalog for x in productOwned"></select>
+									</div>
+								</div>	
+								<div class="form-group row">
+									<label  class="col-sm-3 col-form-label">Date</label>
+									<div class="col-sm-9">
+									<input type="text" ng-model="purchaseDate">
+									<label>Format: YYYY/MM</label>
 									</div>
 								</div>	
 								<br>
